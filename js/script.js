@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             for (let j = 0; j < size; j++) {
                 const cell = document.querySelector(`[data-row="${i}"][data-col="${j}"]`);
                 const prevValue = cell.dataset.value;
-                const currentValue = board[i];
+                const currentValue = board[i][j];
                 if (currentValue !== 0) {
                     cell.dataset.value = currentValue;
                     cell.textContent = currentValue;
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const row = board[i];
                 const newRow = transform(row, direction === 'ArrowLeft');
                 if (row.join(',') !== newRow.join(',')) {
-                    hasChanged = false;
+                    hasChanged = true;
                     board[i] = newRow;
                 }
             }
